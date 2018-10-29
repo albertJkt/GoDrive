@@ -56,7 +56,7 @@ public class FuelActivity extends AppCompatActivity {
 
             databaseFuel.child(fuelID).setValue(fuel);
 
-            Toast.makeText(this, "Pridėta", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Pridėta", Toast.LENGTH_LONG).show();
             amount.setText("");
             price.setText("");
 
@@ -70,6 +70,12 @@ public class FuelActivity extends AppCompatActivity {
     public void homeButtonClick (View v)
     {
         Intent intent = new Intent(this, FirstScreen.class);
+        intent.putExtra("USERNAME", newString );
+        startActivity(intent);
+    }
+    public void serviceButtonClick (View v)
+    {
+        Intent intent = new Intent(this, ServiceActivity.class);
         intent.putExtra("USERNAME", newString );
         startActivity(intent);
     }

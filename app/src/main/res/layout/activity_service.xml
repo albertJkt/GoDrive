@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FuelActivity">
+    tools:context=".ServiceActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.069"
-        app:srcCompat="@drawable/ic_local_gas_station_24px" />
+        app:srcCompat="@drawable/ic_build_24px" />
 
     <TextView
         android:id="@+id/textView"
@@ -29,16 +29,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Kūro kiekis litrais"
+        android:text="Remonto tipas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <EditText
-        android:id="@+id/textAmountOfFuel"
+        android:id="@+id/textService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -47,6 +47,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rect_9"
         android:ems="10"
+        android:hint="Pvz. alyvos keitimas"
         android:inputType="textPersonName"
         android:paddingStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,14 +58,14 @@
         app:layout_constraintVertical_bias="0.604" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewServicePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Kaina už litrą"
+        android:text="Kaina"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
@@ -73,7 +74,7 @@
         app:layout_constraintVertical_bias="0.702" />
 
     <EditText
-        android:id="@+id/textPricePerLiter"
+        android:id="@+id/textServicePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -92,7 +93,7 @@
         app:layout_constraintVertical_bias="0.762" />
 
     <Button
-        android:id="@+id/buttonSaveFuel"
+        android:id="@+id/buttonSaveService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -100,7 +101,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/register_1"
-        android:onClick="SaveFuelInfo"
+        android:onClick="SaveService"
         android:text="Išsaugoti"
         android:textColor="@color/red_app_color"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,6 +110,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.889" />
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/imageLine3"
+        android:layout_width="fill_parent"
+        android:layout_height="9dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_bright"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.919" />
+
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/imageView3"
         android:layout_width="fill_parent"
@@ -145,7 +164,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/buttonFuelBlack"
+        android:id="@+id/buttonFuelService"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_marginBottom="8dp"
@@ -153,14 +172,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ic_local_gas_station_24px"
-        android:backgroundTint="@color/red_app_color"
+        android:onClick="fuelClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
     <Button
         android:id="@+id/buttonService"
         android:layout_width="42dp"
@@ -170,7 +188,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ic_build_24px"
-        android:onClick="serviceButtonClick"
+        android:backgroundTint="@color/red_app_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.832"

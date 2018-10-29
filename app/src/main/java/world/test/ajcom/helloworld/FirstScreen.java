@@ -53,6 +53,12 @@ public class FirstScreen extends AppCompatActivity {
         intent.putExtra("USERNAME", newString);
         startActivity(intent);
     }
+    public void serviceButtonClick(View v)
+    {
+        Intent intent = new Intent(this, ServiceActivity.class);
+        intent.putExtra("USERNAME", newString);
+        startActivity(intent);
+    }
     void fetchData()
     {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("fuel");
