@@ -24,6 +24,10 @@ public class FirstScreen extends AppCompatActivity {
 
     String newString;
     TextView textView;
+    TextView serviceText;
+    ArrayList<Fuel> fuels = new ArrayList<>();
+    ArrayList<Service> services = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,11 @@ public class FirstScreen extends AppCompatActivity {
         }
 
         textView = (TextView)findViewById(R.id.textFuelPriceAll);
+        serviceText = (TextView)findViewById(R.id.textServicePriceAll);
 
-        fetchData();
+        fetchDataService();
+        fetchDataFuel();
+        initRecyclerView(services,fuels);
 
     }
 
@@ -59,14 +66,13 @@ public class FirstScreen extends AppCompatActivity {
         intent.putExtra("USERNAME", newString);
         startActivity(intent);
     }
-    void fetchData()
+    void fetchDataFuel()
     {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("fuel");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Fuel> fuels = new ArrayList<>();
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 Float overallFuelUsage=0f;
                 for (DataSnapshot child : children)
@@ -82,10 +88,42 @@ public class FirstScreen extends AppCompatActivity {
                         overallFuelUsage +=fuel.getOverallPrice();
                     }
                 }
-
-                initRecyclerView(fuels);
                 NumberFormat formatter = new DecimalFormat("#0.00");
                 textView.setText("Iš viso išleista kūrui €: "+formatter.format(overallFuelUsage));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    void fetchDataService()
+    {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("service");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                Float overallService=0f;
+                for (DataSnapshot child : children)
+                {
+                    System.out.println("DataSnapshot");
+                    Service service =  child.getValue(Service.class);
+                    System.out.println(service.getServiceType());
+
+                    if (service.getUsername().equals(newString))
+                    {
+                        services.add(service);
+                        System.out.println(service);
+                        overallService += service.getPrice();
+
+                    }
+
+                    NumberFormat formatter = new DecimalFormat("#0.00");
+                    serviceText.setText("Iš viso išleista servisui €: "+formatter.format(overallService));
+                }
             }
 
             @Override
@@ -102,10 +140,10 @@ public class FirstScreen extends AppCompatActivity {
         return uName;
     }
 
-    private void initRecyclerView (ArrayList<Fuel> arrayList)
+    private void initRecyclerView (ArrayList<Service> services, ArrayList<Fuel> arrayList)
     {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(arrayList, this);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(services, arrayList, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
