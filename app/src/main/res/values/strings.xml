@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Go Drive</string>
     <color name="red_app_color">#C71A3B</color>
+    <string name="title_activity_tabbed_test">TabbedActivityTest</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="toggle_camera">Toggle Camera</string>
+    <string name="detect_object">Detect Object</string>
 </resources>

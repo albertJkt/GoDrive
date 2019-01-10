@@ -79,6 +79,12 @@ public class FuelActivity extends AppCompatActivity {
         intent.putExtra("USERNAME", newString );
         startActivity(intent);
     }
+    public void camButtonClick(View v)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("USERNAME", newString);
+        startActivity(intent);
+    }
     public String getUname(String username){
 
         int uNameIndex = username.lastIndexOf(".");

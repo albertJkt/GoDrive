@@ -60,6 +60,12 @@ public class FirstScreen extends AppCompatActivity {
         intent.putExtra("USERNAME", newString);
         startActivity(intent);
     }
+    public void camButtonClick(View v)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("USERNAME", newString);
+        startActivity(intent);
+    }
     public void serviceButtonClick(View v)
     {
         Intent intent = new Intent(this, ServiceActivity.class);

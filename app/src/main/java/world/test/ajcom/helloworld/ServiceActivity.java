@@ -52,6 +52,12 @@ public class ServiceActivity extends AppCompatActivity {
         intent.putExtra("USERNAME", newString);
         startActivity(intent);
     }
+    public void camButtonClick(View v)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("USERNAME", newString);
+        startActivity(intent);
+    }
 
     public void SaveService(View v) {
         if (!TextUtils.isEmpty(serviceType.getText().toString()) || !TextUtils.isEmpty(servicePrice.getText().toString())) {
